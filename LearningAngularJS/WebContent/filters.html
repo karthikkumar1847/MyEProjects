@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="ISO-8859-1">
+<title>Filters</title>
+<script src="lib/angular.js"></script>
+<script src="scripts/filterScript.js"></script>
+<link href="Styles.css" rel="stylesheet" />
+</head>
+<body ng-app="myModuleFilter" style="font-family: Arial">
+	<div ng-controller="myCtrlFilter">
+Rows to display: <input type="number" step="1" min="0" max="5" ng-model="rowLimit" />
+OrderBy: <select ng-model="sortColumn">
+			<option value="name">Name ASC</option>
+			<option value="gender">Gender ASC</option>
+			<option value="dateOfBirth">Date Of Birth ASC</option>
+			<option value="salary">Salary ASC</option>
+			<option value="-salary">Salary DESC</option>
+		 </select>
+	  <br><br>
+	  	<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Date of Birth</th>
+					<th>Gender</th>
+					<th>Salary(number)</th>
+					<th>Salary(curency)</th>
+				</tr>
+			</thead>	
+			<tbody>
+				<tr ng-repeat="employee in employees | limitTo: rowLimit | orderBy:sortColumn"> <!-- "limitTo: 3:2"  ---- limitTo:(num of rows):(Starting from row) -->
+					<td>{{employee.name | uppercase}}</td>
+					<td>{{employee.dateOfBirth | date:"dd/MM/yyyy"}}</td>
+					<td>{{employee.gender | lowercase}}</td>
+					<td>{{employee.salary | number:2}}</td>
+					<td>{{employee.salary | currency:"$":1}}</td>
+				</tr>
+			</tbody>	
+		</table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+ -->
+ <beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+		xmlns:context="http://www.springframework.org/schema/context" default-init-method="myInit" default-destroy-method="clearUp">
+		
+<!-- <beans default-init-method="myInit" default-destroy-method="clearUp"> -->
+
+
+	 <bean id="triangle" class="com.java.Triangle" name="triangle-name" autowire="byName" >   <!-- init-method="myInit" destroy-method="clearUp"   this is for individual bean, or you can set at global level for beans tag-->
+	<!-- <property name="type" value="Equilateral" />
+		<property name="height" value="20"/> -->                              <!--setter injecting-->
+	
+	<!-- <constructor-arg  type = "java.lang.String" value ="Equilateral"/>
+		<constructor-arg type = "int" value ="20"/> -->
+		
+	<!-- 	<constructor-arg  index="0" value ="Equilateral"/>
+		<constructor-arg index="1" value ="20"/> -->                 <!-- contructor injecting -->
+		
+	<!-- 	<property name="pointA" ref="point1"/>  -->  <!-- ref bean -->
+		
+	<!--    <property name="pointB">
+			   <ref local="point2" />   -->         <!--  id ref bean -->
+	<!-- 	</property>
+		
+		 <property name="pointC" >
+			<bean class="com.java.Point"> -->        <!--  inner bean -->
+	<!--			<property name="x" value="20"/>
+				<property name="y" value="0"/>	  
+			</bean>
+		</property> -->
+		
+	</bean> 
+	
+	<bean id="pointA" class="com.java.Point">
+		
+		<property name="x" value="${pointA.pointX}"/>
+		<property name="y" value="${pointA.pointY}"/>	
+	</bean>
+	
+ 	<bean id="pointB" class="com.java.Point">
+		<property name="x" value="0"/>
+		<property name="y" value="20"/>	
+	</bean>
+	
+	<bean id="pointC" class="com.java.Point">
+	<qualifier value="circleRelated"/>
+		<property name="x" value="20"/>
+		<property name="y" value="0"/>	
+	</bean> 
+
+	<!-- <alias name="triangle" alias="triangle-alias"/> -->
+	
+	<bean class="com.java.DisplayNameBeanPostProcessor" />
+	<bean class="com.java.MyBeanFactoryPostProcessor" />
+	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="pointsconfig.properties"/>
+	</bean>
+	
+	<bean id="circle" class="com.java.Circle">
+		<!-- <property name="center" ref="pointA"></property> -->
+	</bean>
+	
+	<!-- <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/> -->
+	
+	<context:annotation-config/>
+</beans>

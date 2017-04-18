@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Personal Information</title>
+</head>
+<body>
+<h1 align="center">Personal Information Page</h1>
+<form class="PersonalInfoServlet" action="/WebApp3/PInfoServlet" method="post" >
+<table>
+<tr><td>First Name: </td><td><input type="text" name="fName"></td></tr>
+<tr><td>Middle Name:</td><td> <input type="text" name="mName"></td></tr>
+<tr><td>Last Name:</td><td> <input type="text" name="lName"></tr>
+<tr><td>Gender:</td><td> <input type="radio" name="gender" id="mGender" value="male">
+			<label for="mGender">Male</label>
+		<input type="radio" name="gender" id="fGender" value="female">
+			<label for="fGender">Female</label>
+		<br>
+	<tr><td><input type="submit" value="Next">
+</table>
+</form>
+</body>
+</html>

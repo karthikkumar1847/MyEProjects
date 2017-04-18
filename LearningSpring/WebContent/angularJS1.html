@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+<head>
+<meta charset="ISO-8859-1">
+<title>Angular JS</title>
+<script src="lib/angular.min.js"></script>
+<script src="script1.js"></script>
+
+</head>
+<body ng-controller="myController">
+<div> 10 + 30 = {{10+30}}</div>
+<div> 1==1 is  {{1==1}}</div> 
+<div> {{{name:'Mark',age:'25'}.name}}</div>
+<div> {{['Jack','sparrow','peter'][1]}}</div>
+
+<div  > <!-- ng-controller="myController" -->
+<input type="text" ng-model="name">
+Hi {{name}}, {{message}} 
+<div ng-bind="name"></div>
+</div>
+<div>
+<h4>company details</h4>
+	{{company.firstName}}
+</div>
+<div ng-bind="company.lastName"></div>
+<div ng-bind="company.year"></div>
+</body>
+</html>

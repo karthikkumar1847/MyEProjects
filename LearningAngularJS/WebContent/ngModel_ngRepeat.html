@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="lib/angular.js"></script>
+<script src="scripts/ngModel_ngRepeatScript.js"></script>
+</head>
+<body ng-app="myModule" style="font-family: Arial">
+<div ng-controller="myCtrl">
+	<table>
+		<tr>
+			<td>First Name: </td>
+			<td><input type="text" ng-model="employee.fname"></td>
+		</tr>
+		<tr>
+			<td>Last Name: </td>
+			<td><input type="text" ng-model="employee.lname"></td>
+		</tr>
+		<tr>
+			<td>Role: </td>
+			<td><input type="text" ng-model="employee.role"></td>
+		</tr>
+	</table>
+	<br>
+	<table>
+		<tr>
+			<td>First Name: </td>
+			<td>{{employee.fname}}</td>
+		</tr>
+		<tr>
+			<td>Last Name: </td>
+			<td>{{employee.lname}}</td>
+		</tr>
+		<tr>
+			<td>Role: </td>
+			<td>{{employee.role}}</td>
+		</tr>
+	</table>
+	
+<table >
+	<thead>
+		<tr>
+			<th>First_Name</th>
+			<th>Last_Name</th>
+			<th>Age</th>
+			<th>Role</th>
+			<th>Salary</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="emp in employees">
+			<td>{{emp.fName}}</td>
+			<td>{{emp.lName}}</td>
+			<td>{{emp.age}}</td>
+			<td>{{emp.role}}</td>
+			<td>{{emp.salary}}</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<br>
+<div ng-controller="myCtrl2"> 
+<ul >
+	<li ng-repeat="country in countries" ng-init="parentIndex=$index">
+		{{country.name}} - ParentIndex = {{$parent.$index}}, Index = {{$index}}
+		<ul>
+			<li ng-repeat="city in country.cities">
+				{{city.name}} - ParentIndex = {{parentIndex}}, Index = {{$index}}
+			</li>
+		</ul>
+	</li>
+	
+</ul>
+</div>
+</body>
+</html>
